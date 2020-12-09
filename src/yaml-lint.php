@@ -51,7 +51,7 @@ try {
     $componentsManifest = __DIR__ . $pathToTry . 'composer/installed.json';
     $components = json_decode(file_get_contents($componentsManifest), true);
     foreach ($components as $component) {
-        if ($component['name'] == 'symfony/yaml') {
+        if (isset($component['name']) && $component['name'] == 'symfony/yaml') {
             $appStr .= ', symfony/yaml ' . $component['version'];
             break;
         }
